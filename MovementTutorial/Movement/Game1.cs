@@ -1,5 +1,6 @@
 ﻿#region Using Statements
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -72,15 +73,19 @@ namespace GameName1
         {
             //set our keyboardstate tracker update can change the gamestate on every cycle
             KeyboardState keyboard = Keyboard.GetState();
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            GamePadState p1_gamepad = GamePad.GetState(PlayerIndex.One);
+
+         
+
+            if (p1_gamepad.Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             // TODO: Add your update logic here
             //Up, down, left, right affect the coordinates of the sprite
-            if(keyboard.IsKeyDown(Keys.Right)){
+            if(keyboard.IsKeyDown(Keys.Right) ){
                 sprite.spriteX += 5;
             }
-            if (keyboard.IsKeyDown(Keys.Left))
+            if (keyboard.IsKeyDown(Keys.Left) )
             {
                 sprite.spriteX -= 5;
             }
